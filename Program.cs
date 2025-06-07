@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.ML;
+using practicaml.MLSentimiento;
 using practicaml.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddPredictionEnginePool<MLSentimiento.ModelInput, MLSentimiento.ModelOutput>()
+    .FromFile("MLSentimiento.mlnet");
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
