@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Recomendación de Productos";
+    var usuarios = ViewBag.Usuarios as List<practicaml.Models.Usuario>;
+    var recomendaciones = ViewBag.Recomendaciones as List<(practicaml.Models.Producto producto, float score)>;
+    var usuarioSeleccionado = ViewBag.UsuarioSeleccionado as string;
+    var error = ViewBag.Error as string;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Predecir" method="post">
+    <label for="userId">Seleccione un usuario:</label>
+<select id="userId" name="userId" required>
+    <option value="">-- Seleccione --</option>
+    @foreach(var user in usuarios)
+    {
+        if (usuarioSeleccionado == user.Nombre)
+        {
+            <option value="@user.UserId" selected>@user.Nombre</option>
+        }
+        else
+        {
+            <option value="@user.UserId">@user.Nombre</option>
+        }
+    }
+</select>
+
+
+
+    <button type="submit" style="margin-left:10px;">Obtener recomendaciones</button>
+</form>
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <p style="color:red;">@error</p>
+}
+
+@if (recomendaciones != null && recomendaciones.Any())
+{
+    <h3>Recomendaciones para @usuarioSeleccionado:</h3>
+    <ul>
+        @foreach(var rec in recomendaciones)
+        {
+            <li>@rec.producto.Nombre - Score: @rec.score.ToString("F2")</li>
+        }
+    </ul>
+}
