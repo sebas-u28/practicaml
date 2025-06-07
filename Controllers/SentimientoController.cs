@@ -32,6 +32,7 @@ public IActionResult Predecir(string texto)
 
     ViewBag.TextoIngresado = texto;
     ViewBag.Sentimiento = resultado;
+    ViewBag.Score = prediction.Score; // si Score es un array
 
     return View("Formulario");
 }
