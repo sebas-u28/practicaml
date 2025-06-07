@@ -21,8 +21,8 @@
     <PackageReference Include="Microsoft.ML.FastTree" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.ML" Version="1.5.5" />
   </ItemGroup>
-  <ItemGroup Label="MLRecomendacion">
-    <None Include="MLRecomendacion.mlnet">
+  <ItemGroup Label="MLSentimiento">
+    <None Include="MLSentimiento.mlnet">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

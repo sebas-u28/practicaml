@@ -5,12 +5,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-namespace practicaml
+namespace practicaml.MLSentimiento
 {
-    public partial class MLRecomendacion
+    public partial class MLSentimiento
     {
         /// <summary>
-        /// model input class for MLRecomendacion.
+        /// model input class for MLSentimiento.
         /// </summary>
         #region model input class
         public class ModelInput
@@ -28,7 +28,7 @@ namespace practicaml
         #endregion
 
         /// <summary>
-        /// model output class for MLRecomendacion.
+        /// model output class for MLSentimiento.
         /// </summary>
         #region model output class
         public class ModelOutput
@@ -55,7 +55,7 @@ namespace practicaml
 
         #endregion
 
-        private static string MLNetModelPath = Path.GetFullPath("MLRecomendacion.mlnet");
+        private static string MLNetModelPath = Path.GetFullPath("MLSentimiento.mlnet");
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 
